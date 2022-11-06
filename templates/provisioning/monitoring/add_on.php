@@ -82,6 +82,14 @@
 									<td style="background: #64f92e;"><?= $dataao['totnsklx']; ?></td>
 								</tr>
 								<tr>
+									<td style="text-align: left;"><b><i>PEN</i></b></td>
+									<td style="background: #f5ba3b;"><?= $dataao['hrpen']; ?></td>
+									<td style="background: #f5ba3b;"><?= $dataao['fallpen']; ?></td>
+									<td style="background: #a6f5e3;"><?= $dataao['comppen']; ?></td>
+									<td style="background: #a6f5e3;"><?= $dataao['pspen']; ?></td>
+									<td style="background: #64f92e;"><?= $dataao['totnspen']; ?></td>
+								</tr>
+								<tr>
 									<td style="text-align: left;"><b><i>SOP</i></b></td>
 									<td style="background: #f5ba3b;"><?= $dataao['hrsop']; ?></td>
 									<td style="background: #f5ba3b;"><?= $dataao['fallsop']; ?></td>

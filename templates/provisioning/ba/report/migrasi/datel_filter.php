@@ -92,6 +92,13 @@
 									<td><?= substr(($rmig['klxsdhba'] / ($rmig['klxblmba'] + $rmig['klxsdhba'])) * 100, 0, 5) ?>%</td>
 								</tr>
 								<tr>
+									<td><b>PEN</b></td>
+									<td style="background: #ff9999;"><a style="color: black;" href="<?= site_url('provisioning/ba_online/fviewnok?datel=PEN&tahun=' . $tahun . '&bulan=' . $month . '&order=mig') ?>"><?= $rmig['klxblmba']; ?></a></td>
+									<td style="background: #88f739;"><?= $rmig['pensdhba']; ?></td>
+									<td><?= $rmig['penblmba'] + $rmig['pensdhba'] ?></td>
+									<td><?= substr(($rmig['pensdhba'] / ($rmig['penblmba'] + $rmig['pensdhba'])) * 100, 0, 5) ?>%</td>
+								</tr>
+								<tr>
 									<td><b>SOP</b></td>
 									<td style="background: #ff9999;"><a style="color: black;" href="<?= site_url('provisioning/ba_online/fviewnok?datel=SOP&tahun=' . $tahun . '&bulan=' . $month . '&order=mig') ?>"><?= $rmig['sopblmba']; ?></a></td>
 									<td style="background: #88f739;"><?= $rmig['sopsdhba']; ?></td>

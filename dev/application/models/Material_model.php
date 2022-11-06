@@ -103,6 +103,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylblmba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxblmba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as penblmba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopblmba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldblmba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtblmba,
@@ -116,6 +117,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylsdhba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxsdhba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pensdhba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopsdhba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldsdhba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtsdhba,
@@ -129,6 +131,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylgt,
                 SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxgt,
+                SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pengt,
                 SUM(CASE WHEN (datel='SOP') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopgt,
                 SUM(CASE WHEN (datel='GLD') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldgt,
                 SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtgt,
@@ -310,6 +313,7 @@ class Material_model extends CI_Model
 
                SUM(CASE WHEN (datel='BYL') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylblmba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxblmba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as penblmba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopblmba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldblmba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtblmba,
@@ -323,6 +327,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylsdhba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxsdhba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pensdhba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopsdhba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldsdhba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtsdhba,
@@ -336,6 +341,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylgt,
                 SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxgt,
+                SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pengt,
                 SUM(CASE WHEN (datel='SOP') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopgt,
                 SUM(CASE WHEN (datel='GLD') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldgt,
                 SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtgt,
@@ -366,6 +372,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylblmba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxblmba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as penblmba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopblmba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldblmba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtblmba,
@@ -379,6 +386,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylsdhba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxsdhba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pensdhba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopsdhba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldsdhba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtsdhba,
@@ -392,6 +400,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylgt,
                 SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxgt,
+                SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pengt,
                 SUM(CASE WHEN (datel='SOP') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopgt,
                 SUM(CASE WHEN (datel='GLD') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldgt,
                 SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtgt,
@@ -467,6 +476,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylblmba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxblmba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as penblmba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopblmba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldblmba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtblmba,
@@ -480,6 +490,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylsdhba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxsdhba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pensdhba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopsdhba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldsdhba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtsdhba,
@@ -493,6 +504,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylgt,
                 SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxgt,
+                SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pengt,
                 SUM(CASE WHEN (datel='SOP') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopgt,
                 SUM(CASE WHEN (datel='GLD') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldgt,
                 SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtgt,
@@ -623,6 +635,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylblmba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxblmba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as penblmba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopblmba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldblmba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru NOT IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtblmba,
@@ -636,6 +649,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylsdhba,
                 SUM(CASE WHEN (datel='KLX') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxsdhba,
+                SUM(CASE WHEN (datel='PEN') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pensdhba,
                 SUM(CASE WHEN (datel='SOP') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopsdhba,
                 SUM(CASE WHEN (datel='GLD') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldsdhba,
                 SUM(CASE WHEN (datel='KRT') AND (sc_baru IN (SELECT sc FROM tb_ba_digital)) AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtsdhba,
@@ -649,6 +663,7 @@ class Material_model extends CI_Model
 
                 SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as bylgt,
                 SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as klxgt,
+                SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as pengt,
                 SUM(CASE WHEN (datel='SOP') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as sopgt,
                 SUM(CASE WHEN (datel='GLD') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as gldgt,
                 SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as krtgt,

@@ -261,6 +261,7 @@
                                 <select name="datel" class="form-control">
                                     <option value="BYL">BYL</option>
                                     <option value="KLX">KLX</option>
+                                    <option value="PEN">PEN</option>
                                     <option value="SOP">SOP</option>
                                     <option value="GLD">GLD</option>
                                     <option value="KRT">KRT</option>

@@ -85,6 +85,15 @@
 									<td style="background: #64f92e;"><a style="text-decoration: none; color:#000;" href="showns/klx/ns"><?= $datans['totnsklx']; ?></a></td>
 								</tr>
 								<tr>
+									<td style="text-align: left;"><b><i>PEN</i></b></td>
+									<td style="background: #fff454;"><a style="text-decoration: none; color:#000;" href="showns/pen/wait"><?= $datans['waitpen']; ?></a></td>
+									<td style="background: #fff454;"><a style="text-decoration: none; color:#000;" href="showns/pen/prog"><?= $datans['progpen']; ?></a></td>
+									<td style="background: #fff454;"><a style="text-decoration: none; color:#000;" href="showns/pen/fact"><?= $datans['fallpen']; ?></a></td>
+									<td style="background: #88f739;"><a style="text-decoration: none; color:#000;" href="showns/pen/comp"><?= $datans['comppen']; ?></a></td>
+									<td style="background: #88f739;"><a style="text-decoration: none; color:#000;" href="showns/pen/ps"><?= $datans['pspen']; ?></a></td>
+									<td style="background: #64f92e;"><a style="text-decoration: none; color:#000;" href="showns/pen/ns"><?= $datans['totnspen']; ?></a></td>
+								</tr>
+								<tr>
 									<td style="text-align: left;"><b><i>SOP</i></b></td>
 									<td style="background: #fff454;"><a style="text-decoration: none; color:#000;" href="showns/sop/wait"><?= $datans['waitsop']; ?></a></td>
 									<td style="background: #fff454;"><a style="text-decoration: none; color:#000;" href="showns/sop/prog"><?= $datans['progsop']; ?></a></td>

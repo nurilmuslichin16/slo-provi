@@ -82,6 +82,14 @@
 									<td style="background: #64f92e;"><?= $datamd['totnsklx']; ?></td>
 								</tr>
 								<tr>
+									<td style="text-align: left;"><b><i>PEN</i></b></td>
+									<td style="background: #B2C5ED;"><?= $datamd['hrpen']; ?></td>
+									<td style="background: #B2C5ED;"><?= $datamd['fallpen']; ?></td>
+									<td style="background: #FFFC00;"><?= $datamd['comppen']; ?></td>
+									<td style="background: #DDEBF6;"><?= $datamd['pspen']; ?></td>
+									<td style="background: #64f92e;"><?= $datamd['totnspen']; ?></td>
+								</tr>
+								<tr>
 									<td style="text-align: left;"><b><i>SOP</i></b></td>
 									<td style="background: #B2C5ED;"><?= $datamd['hrsop']; ?></td>
 									<td style="background: #B2C5ED;"><?= $datamd['fallsop']; ?></td>

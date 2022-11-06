@@ -92,6 +92,13 @@
 									<td><?= substr(($rao['klxsdhba'] / ($rao['klxblmba'] + $rao['klxsdhba'])) * 100, 0, 5) ?>%</td>
 								</tr>
 								<tr>
+									<td><b>PEN</b></td>
+									<td style="background: #ff9999;"><a style="color: black;" href="<?= site_url('provisioning/ba_online/viewnok?datel=PEN&order=ao') ?>"><?= $rao['penblmba']; ?></a></td>
+									<td style="background: #88f739;"><?= $rao['pensdhba']; ?></td>
+									<td><?= $rao['penblmba'] + $rao['pensdhba'] ?></td>
+									<td><?= substr(($rao['pensdhba'] / ($rao['penblmba'] + $rao['pensdhba'])) * 100, 0, 5) ?>%</td>
+								</tr>
+								<tr>
 									<td><b>SOP</b></td>
 									<td style="background: #ff9999;"><a style="color: black;" href="<?= site_url('provisioning/ba_online/viewnok?datel=SOP&order=ao') ?>"><?= $rao['sopblmba']; ?></a></td>
 									<td style="background: #88f739;"><?= $rao['sopsdhba']; ?></td>

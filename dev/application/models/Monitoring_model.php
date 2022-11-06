@@ -10,6 +10,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=1) THEN 1 ELSE 0 END) as waitbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=1) THEN 1 ELSE 0 END) as waitklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=1) THEN 1 ELSE 0 END) as waitpen,
 				SUM(CASE WHEN (datel='SOP') AND (status_id=1) THEN 1 ELSE 0 END) as waitsop,
 				SUM(CASE WHEN (datel='GLD') AND (status_id=1) THEN 1 ELSE 0 END) as waitgld,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=1) THEN 1 ELSE 0 END) as waitkrt,
@@ -23,6 +24,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=2) THEN 1 ELSE 0 END) as progbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=2) THEN 1 ELSE 0 END) as progklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=2) THEN 1 ELSE 0 END) as progpen,
 				SUM(CASE WHEN (datel='SOP') AND (status_id=2) THEN 1 ELSE 0 END) as progsop,
 				SUM(CASE WHEN (datel='GLD') AND (status_id=2) THEN 1 ELSE 0 END) as proggld,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=2) THEN 1 ELSE 0 END) as progkrt,
@@ -36,6 +38,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=3) THEN 1 ELSE 0 END) as fallbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=3) THEN 1 ELSE 0 END) as fallklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=3) THEN 1 ELSE 0 END) as fallpen,
 				SUM(CASE WHEN (datel='SOP') AND (status_id=3) THEN 1 ELSE 0 END) as fallsop,
 				SUM(CASE WHEN (datel='GLD') AND (status_id=3) THEN 1 ELSE 0 END) as fallgld,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=3) THEN 1 ELSE 0 END) as fallkrt,
@@ -49,6 +52,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as comppen,
 				SUM(CASE WHEN (datel='SOP') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compsop,
 				SUM(CASE WHEN (datel='GLD') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compgld,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compkrt,
@@ -62,6 +66,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=7) THEN 1 ELSE 0 END) as psbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=7) THEN 1 ELSE 0 END) as psklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=7) THEN 1 ELSE 0 END) as pspen,
 				SUM(CASE WHEN (datel='SOP') AND (status_id=7) THEN 1 ELSE 0 END) as pssop,
 				SUM(CASE WHEN (datel='GLD') AND (status_id=7) THEN 1 ELSE 0 END) as psgld,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=7) THEN 1 ELSE 0 END) as pskrt,
@@ -75,6 +80,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnsbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnsklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnspen,
 				SUM(CASE WHEN (datel='SOP') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnssop,
 				SUM(CASE WHEN (datel='GLD') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnsgld,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnskrt,
@@ -109,6 +115,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrpen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrpkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrkrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrkto,
@@ -121,6 +128,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=3) THEN 1 ELSE 0 END) as fallbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=3) THEN 1 ELSE 0 END) as fallklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=3) THEN 1 ELSE 0 END) as fallpen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=3) THEN 1 ELSE 0 END) as fallpkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=3) THEN 1 ELSE 0 END) as fallkrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=3) THEN 1 ELSE 0 END) as fallkto,
@@ -133,6 +141,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as comppen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as comppkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compkrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compkto,
@@ -145,6 +154,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=7) THEN 1 ELSE 0 END) as psbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=7) THEN 1 ELSE 0 END) as psklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=7) THEN 1 ELSE 0 END) as pspen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=7) THEN 1 ELSE 0 END) as pspkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=7) THEN 1 ELSE 0 END) as pskrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=7) THEN 1 ELSE 0 END) as pskto,
@@ -157,6 +167,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnsbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnsklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnspen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnspkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnskrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnskto,
@@ -254,6 +265,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrpen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrpkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrkrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=1 OR status_id=2) THEN 1 ELSE 0 END) as hrkto,
@@ -266,6 +278,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=3) THEN 1 ELSE 0 END) as fallbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=3) THEN 1 ELSE 0 END) as fallklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=3) THEN 1 ELSE 0 END) as fallpen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=3) THEN 1 ELSE 0 END) as fallpkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=3) THEN 1 ELSE 0 END) as fallkrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=3) THEN 1 ELSE 0 END) as fallkto,
@@ -278,6 +291,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as comppen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as comppkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compkrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=4 OR status_id=5 OR status_id=6) THEN 1 ELSE 0 END) as compkto,
@@ -290,6 +304,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=7) THEN 1 ELSE 0 END) as psbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=7) THEN 1 ELSE 0 END) as psklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=7) THEN 1 ELSE 0 END) as pspen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=7) THEN 1 ELSE 0 END) as pspkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=7) THEN 1 ELSE 0 END) as pskrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=7) THEN 1 ELSE 0 END) as pskto,
@@ -302,6 +317,7 @@ class Monitoring_model extends CI_Model
 
 				SUM(CASE WHEN (datel='BYL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnsbyl,
 				SUM(CASE WHEN (datel='KLX') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnsklx,
+				SUM(CASE WHEN (datel='PEN') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnspen,
 				SUM(CASE WHEN (datel='PKL') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnspkl,
 				SUM(CASE WHEN (datel='KRT') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnskrt,
 				SUM(CASE WHEN (datel='KTO') AND (status_id=4 OR status_id=5  OR status_id=6 OR status_id=7) THEN 1 ELSE 0 END) as totnskto,

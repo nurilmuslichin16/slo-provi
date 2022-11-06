@@ -34,6 +34,7 @@
 									<option value="all">All</option>
 									<option value="BYL">BOYOLALI</option>
 									<option value="KLX">KLATEN</option>
+									<option value="PEN">PEDAN DELANGGU</option>
 									<option value="SOP">PALUR</option>
 									<option value="GLD">GLADAK</option>
 									<option value="KRT">KERTEN</option>
