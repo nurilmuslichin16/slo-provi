@@ -1,207 +1,188 @@
 <div class="col-xs-12 col-sm-12 widget-container-col" id="widget-container-col-1">
-	<button class="btn btn-square btn-danger btn-sm" onclick="add_users()"><i class="fa fa-plus"></i> Add New Users</button>
-	<div class="widget-box widget-color-dark" id="widget-box-1">
-		<div class="widget-header">
-			<h5 class="widget-title">Users</h5>
-			<div class="widget-toolbar">
+    <button class="btn btn-square btn-danger btn-sm" onclick="add_users()"><i class="fa fa-plus"></i> Add New Users</button>
+    <div class="widget-box widget-color-dark" id="widget-box-1">
+        <div class="widget-header">
+            <h5 class="widget-title">Users</h5>
+            <div class="widget-toolbar">
 
-				<a href="#" data-action="fullscreen" class="orange2">
-					<i class="ace-icon fa fa-expand"></i>
-				</a>
+                <a href="#" data-action="fullscreen" class="orange2">
+                    <i class="ace-icon fa fa-expand"></i>
+                </a>
 
-				<a href="javascript:void(0)" onclick="reload_table()" data-action="reload">
-					<i class="ace-icon fa fa-refresh"></i>
-				</a>
+                <a href="javascript:void(0)" onclick="reload_table()" data-action="reload">
+                    <i class="ace-icon fa fa-refresh"></i>
+                </a>
 
-				<a href="#" data-action="collapse">
-					<i class="ace-icon fa fa-chevron-up"></i>
-				</a>
+                <a href="#" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
 
-				<a href="#" data-action="close">
-					<i class="ace-icon fa fa-times"></i>
-				</a>
-			</div>
-		</div>
-		<div class="widget-body">
-			<div class="widget-main">
-				<div id="pesan" style="margin: 10px 5px;"></div>
-	            <table id="table" class="table table-bordered table-hover table-sm text-nowrap" cellspacing="0" width="100%">
-	                <thead>
-		                <tr>
-		                    <th width="10">NO</th>
-		                    <th>Email</th>
-		                    <th>Fullname</th>
-		                    <th>Level</th>
-		                    <th>Active</th>
-		                    <th>Last Login</th>
-		                    <th><i class="fa fa-gear"></i></th>
-		                </tr>
-		            </thead>
-		            <tbody>
-		            	
-		            </tbody>
-	            </table>
-			</div>
-		</div>
-	</div>
+                <a href="#" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main">
+                <div id="pesan" style="margin: 10px 5px;"></div>
+                <table id="table" class="table table-bordered table-hover table-sm text-nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th width="10">NO</th>
+                            <th>Email</th>
+                            <th>Fullname</th>
+                            <th>Level</th>
+                            <th>Active</th>
+                            <th>Last Login</th>
+                            <th><i class="fa fa-gear"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
+    var save_method;
+    var table;
 
-var save_method;
-var table;
- 
-$(document).ready(function() {
- 
-    //datatables
-    table = $('#table').DataTable({ 
- 
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
- 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "<?php echo site_url('users/web/users_list')?>",
-            "type": "POST"
-        },
- 
-        //Set column definition initialisation properties.
-        "columnDefs": [
-        { 
-            "targets": [ -1 ], //last column
-            "orderable": false, //set not orderable
-        },
-        ],
- 
-    });
+    $(document).ready(function() {
 
-    $("input").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
-    $("select").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
- 
-});
+        //datatables
+        table = $('#table').DataTable({
 
-function add_users()
-{
-    save_method = 'add';
-    $('#form')[0].reset();
-    $('.form-group').removeClass('has-error');
-    $('.help-block').empty();
-    $('#modal_form').modal('show');
-    $('.modal-title').text('Add Users');
-}
+            "processing": true, //Feature control the processing indicator.
+            "serverSide": true, //Feature control DataTables' server-side processing mode.
+            "order": [], //Initial no order.
 
-function edit_users(id)
-{
-    save_method = 'update';
-    $('#form')[0].reset();
-    $('.form-group').removeClass('has-error');
-    $('.help-block').empty();
- 
-    $.ajax({
-        url : "<?php echo site_url('users/web/users_edit')?>/" + id,
-        type: "GET",
-        dataType: "JSON",
-        success: function(data)
-        {
- 
-            $('[name="id"]').val(data.users_id);
-            $('[name="email"]').val(data.email);
-            $('[name="fullname"]').val(data.fullname);
-            $('[name="active"]').val(data.active);
-            $('[name="level"]').val(data.level);
-            $('#modal_form').modal('show');
-            $('.modal-title').text('Edit Users');
- 
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            alert('Error get data from ajax');
-        }
-    });
-}
-
-function reload_table()
-{
-    table.ajax.reload(null,false);
-}
-
-function save()
-{
-    $('#btnSave').text('saving...');
-    $('#btnSave').attr('disabled',true);
-    var url;
- 
-    if(save_method == 'add') {
-        url = "<?php echo site_url('users/web/users_add')?>";
-    } else {
-        url = "<?php echo site_url('users/web/users_update')?>";
-    }
- 
-    $.ajax({
-        url : url,
-        type: "POST",
-        data: $('#form').serialize(),
-        dataType: "JSON",
-        success: function(data)
-        {
- 
-            if(data.status) //if success close modal and reload ajax table
-            {
-                $('#modal_form').modal('hide');
-                reload_table();
-                document.getElementById('pesan').innerHTML = data.pesan;
-            }
-            else
-            {
-                for (var i = 0; i < data.inputerror.length; i++) 
-                {
-                    $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error');
-                    $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]);
-                }
-            }
-            $('#btnSave').text('save');
-            $('#btnSave').attr('disabled',false);
- 
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            alert('Error adding / update data');
-            $('#btnSave').text('save');
-            $('#btnSave').attr('disabled',false);
- 
-        }
-    });
-}
-
-function delete_users(id)
-{
-    if(confirm('Are you sure delete this data?'))
-    {
-        $.ajax({
-            url : "<?php echo site_url('users/web/users_delete')?>/"+id,
-            type: "POST",
-            dataType: "JSON",
-            success: function(data)
-            {
-                $('#modal_form').modal('hide');
-                reload_table();
-                document.getElementById('pesan').innerHTML = data.pesan;
+            // Load data for the table's content from an Ajax source
+            "ajax": {
+                "url": "<?php echo site_url('users/web/users_list') ?>",
+                "type": "POST"
             },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                alert('Error deleting data');
+
+            //Set column definition initialisation properties.
+            "columnDefs": [{
+                "targets": [-1], //last column
+                "orderable": false, //set not orderable
+            }, ],
+
+        });
+
+        $("input").change(function() {
+            $(this).parent().parent().removeClass('has-error');
+            $(this).next().empty();
+        });
+        $("select").change(function() {
+            $(this).parent().parent().removeClass('has-error');
+            $(this).next().empty();
+        });
+
+    });
+
+    function add_users() {
+        save_method = 'add';
+        $('#form')[0].reset();
+        $('.form-group').removeClass('has-error');
+        $('.help-block').empty();
+        $('#modal_form').modal('show');
+        $('.modal-title').text('Add Users');
+    }
+
+    function edit_users(id) {
+        save_method = 'update';
+        $('#form')[0].reset();
+        $('.form-group').removeClass('has-error');
+        $('.help-block').empty();
+
+        $.ajax({
+            url: "<?php echo site_url('users/web/users_edit') ?>/" + id,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data) {
+
+                $('[name="id"]').val(data.users_id);
+                $('[name="email"]').val(data.email);
+                $('[name="fullname"]').val(data.fullname);
+                $('[name="active"]').val(data.active);
+                $('[name="level"]').val(data.level);
+                $('#modal_form').modal('show');
+                $('.modal-title').text('Edit Users');
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error get data from ajax');
             }
         });
- 
     }
-}
 
+    function reload_table() {
+        table.ajax.reload(null, false);
+    }
+
+    function save() {
+        $('#btnSave').text('saving...');
+        $('#btnSave').attr('disabled', true);
+        var url;
+
+        if (save_method == 'add') {
+            url = "<?php echo site_url('users/web/users_add') ?>";
+        } else {
+            url = "<?php echo site_url('users/web/users_update') ?>";
+        }
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: $('#form').serialize(),
+            dataType: "JSON",
+            success: function(data) {
+
+                if (data.status) //if success close modal and reload ajax table
+                {
+                    $('#modal_form').modal('hide');
+                    reload_table();
+                    document.getElementById('pesan').innerHTML = data.pesan;
+                } else {
+                    for (var i = 0; i < data.inputerror.length; i++) {
+                        $('[name="' + data.inputerror[i] + '"]').parent().parent().addClass('has-error');
+                        $('[name="' + data.inputerror[i] + '"]').next().text(data.error_string[i]);
+                    }
+                }
+                $('#btnSave').text('save');
+                $('#btnSave').attr('disabled', false);
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error adding / update data');
+                $('#btnSave').text('save');
+                $('#btnSave').attr('disabled', false);
+
+            }
+        });
+    }
+
+    function delete_users(id) {
+        if (confirm('Are you sure delete this data?')) {
+            $.ajax({
+                url: "<?php echo site_url('users/web/users_delete') ?>/" + id,
+                type: "POST",
+                dataType: "JSON",
+                success: function(data) {
+                    $('#modal_form').modal('hide');
+                    reload_table();
+                    document.getElementById('pesan').innerHTML = data.pesan;
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error deleting data');
+                }
+            });
+
+        }
+    }
 </script>
 
 <!-- Bootstrap modal -->
@@ -214,7 +195,7 @@ function delete_users(id)
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="id"/> 
+                    <input type="hidden" value="" name="id" />
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Email</label>
@@ -235,10 +216,12 @@ function delete_users(id)
                             <div class="col-md-9">
                                 <select name="level" class="form-control">
                                     <option value="">--Select Level--</option>
-                                    <option value="5">Administrator</option>
-                                    <option value="1">Manajemen</option>
+                                    <option value="0">Administrator</option>
+                                    <option value="1">CS</option>
                                     <option value="2">Backroom</option>
-                                    <option value="0">CS</option>
+                                    <option value="3">Deployment</option>
+                                    <option value="4">Guest</option>
+                                    <option value="5">Manajemen</option>
                                 </select>
                                 <span class="help-block"></span>
                             </div>
