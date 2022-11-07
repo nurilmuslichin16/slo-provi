@@ -34,16 +34,18 @@ class Web extends MY_Controller
         foreach ($list as $users) {
             $no++;
             $row = array();
-            if ($users->level == 5) {
+            if ($users->level == 0) {
                 $level = '<span class="label label-danger">Administrator</span>';
             } elseif ($users->level == 1) {
-                $level = '<span class="label label-primary">Manajemen</span>';
+                $level = '<span class="label label-primary">Sales</span>';
             } elseif ($users->level == 2) {
                 $level = '<span class="label label-warning">Backroom</span>';
             } elseif ($users->level == 3) {
-                $level = '<span class="label label-info">Gudang</span>';
+                $level = '<span class="label label-info">Deployment</span>';
+            } elseif ($users->level == 4) {
+                $level = '<span class="label label-default">Guest</span>';
             } else {
-                $level = '<span class="label label-default">CS</span>';
+                $level = '<span class="label label-success">Manajemen</span>';
             }
             $row[] = $no;
             $row[] = $users->email;
