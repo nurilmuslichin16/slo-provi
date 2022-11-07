@@ -10,8 +10,9 @@ class Teknisi extends MY_Controller
         if ($this->session->userdata('logged_in') != TRUE) {
             redirect(base_url("auth"));
         }
-        if ($this->session->userdata('level') != 1 && $this->session->userdata('level') != 5) {
-            show_404();
+
+        if (menuUserBotTeknisi($this->session->userdata('level')) == false) {
+            redirect(base_url("index.php/welcome"));
         }
     }
 
@@ -45,8 +46,12 @@ class Teknisi extends MY_Controller
             $row[] = $users->jenis == 'rb' ? 'Resources Based' : 'Order Based';
             $row[] = $users->active == 1 ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Blocked</span>';
 
-            $row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_users(' . "'" . $users->t_telegram_id . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_users(' . "'" . $users->t_telegram_id . "'" . ')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            if (cannotDelete($this->session->userdata('level'))) {
+                $row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_users(' . "'" . $users->t_telegram_id . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            } else {
+                $row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_users(' . "'" . $users->t_telegram_id . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                      <a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_users(' . "'" . $users->t_telegram_id . "'" . ')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            }
 
             $data[] = $row;
         }

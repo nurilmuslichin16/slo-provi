@@ -152,9 +152,10 @@
             dataType: "JSON",
             success: function(data) {
 
-                var level = $("#level_user").val();
+                var hide = $("#hideDatelKategori").val();
 
-                if (level != 5) {
+                if (hide == 1) {
+                    $("#input_datel").hide();
                     $("#input_kategori").hide();
                 }
 
@@ -253,7 +254,13 @@
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" value="" name="id" />
-                    <input type="hidden" id="level_user" value="<?= $this->session->userdata('level'); ?>">
+
+                    <?php if (crudTeknisi($this->session->userdata('level')) == false) { ?>
+                        <input type="hidden" id="hideDatelKategori" value="1">
+                    <?php } else { ?>
+                        <input type="hidden" id="hideDatelKategori" value="0">
+                    <?php } ?>
+
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Datel</label>

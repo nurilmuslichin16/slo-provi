@@ -10,6 +10,10 @@ class List_order extends MY_Controller
         if ($this->session->userdata('logged_in') != TRUE) {
             redirect(base_url("auth"));
         }
+
+        if (menuOrderProvi($this->session->userdata('level')) == false) {
+            redirect(base_url("index.php/welcome"));
+        }
     }
 
     public function index()
@@ -63,13 +67,13 @@ class List_order extends MY_Controller
             $row[] = statusProvi($create['status_id']);
             $row[] = $ba;
             $row[] = $create['failwa'] == 0 ? "-" : "FAILWA";
-            if ($this->session->userdata('level') == 1 || $this->session->userdata('level') == 5) {
-                $row[] = '<a class="btn btn-minier btn-primary" href="javascript:void(0)" title="Follow UP" onclick="follow_up(' . "'" . $create['create_id'] . "'" . ')"><i class="fa fa-edit"></i></a>
 
-                <a class="btn btn-minier btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_data(' . "'" . $create['create_id'] . "'" . ')"><i class="fa fa-trash"></i></a>';
-            } else {
+            if (cannotDelete($this->session->userdata('level'))) {
                 $row[] = '<a class="btn btn-minier btn-primary" href="javascript:void(0)" title="Follow UP" onclick="follow_up(' . "'" . $create['create_id'] . "'" . ')"><i class="fa fa-edit"></i></a>';
+            } else {
+                $row[] = '<a class="btn btn-minier btn-primary" href="javascript:void(0)" title="Follow UP" onclick="follow_up(' . "'" . $create['create_id'] . "'" . ')"><i class="fa fa-edit"></i></a> <a class="btn btn-minier btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_data(' . "'" . $create['create_id'] . "'" . ')"><i class="fa fa-trash"></i></a>';
             }
+
             $data[] = $row;
         }
 

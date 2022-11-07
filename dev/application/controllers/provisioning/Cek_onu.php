@@ -1,27 +1,32 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Cek_onu extends MY_Controller {
+class Cek_onu extends MY_Controller
+{
 
-	public function __construct()
+    public function __construct()
     {
-		parent::__construct();
-        if($this->session->userdata('logged_in') != TRUE){
+        parent::__construct();
+        if ($this->session->userdata('logged_in') != TRUE) {
             redirect(base_url("auth"));
         }
-	}
 
-	public function index()
-	{
-		$data['title'] 		    = 'Provisioning';
-		$data['subtitle'] 	    = 'Cek ONU';
+        if (menuCekOnu($this->session->userdata('level')) == false) {
+            redirect(base_url("index.php/welcome"));
+        }
+    }
+
+    public function index()
+    {
+        $data['title']             = 'Provisioning';
+        $data['subtitle']         = 'Cek ONU';
         $data['odwaittoday']    = $this->dashboard_model->request_today()->row_array();
-        $this->load->view('template',[
-			'content' => $this->load->view('provisioning/cek_onu/data',$data,true)
-		]);
-	}
+        $this->load->view('template', [
+            'content' => $this->load->view('provisioning/cek_onu/data', $data, true)
+        ]);
+    }
 
-	public function create_list()
+    public function create_list()
     {
         $list = $this->cek_onu_model->get_datatables();
         $data = array();
@@ -31,32 +36,31 @@ class Cek_onu extends MY_Controller {
             $time = explode(" ", $create['created_at']);
             $row = array();
             $row[] = $no;
-            $row[] = 'JA'.$create['sales_id'];
+            $row[] = 'JA' . $create['sales_id'];
             $row[] = $create['nama_pelanggan'];
             $row[] = $create['cp'];
             $row[] = $create['odp'];
-            $row[] = date_indo($time[0]).' '.$time[1];
+            $row[] = date_indo($time[0]) . ' ' . $time[1];
             $row[] = $create['req_by'];
             $row[] = $create['fullname'];
- 			$row[] = $create['status'];
-            if ($this->session->userdata('level') == 1 || $this->session->userdata('level') == 5) {
-                $row[] = '<a class="btn btn-minier btn-primary" href="javascript:void(0)" title="Follow UP" onclick="follow_up('."'".$create['cekonu_id']."'".')"><i class="fa fa-edit"></i></a>
+            $row[] = $create['status'];
 
-                <a class="btn btn-minier btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_data('."'".$create['cekonu_id']."'".')"><i class="fa fa-trash"></i></a>';
+            if (cannotDelete($this->session->userdata('level'))) {
+                $row[] = '<a class="btn btn-minier btn-primary" href="javascript:void(0)" title="Follow UP" onclick="follow_up(' . "'" . $create['cekonu_id'] . "'" . ')"><i class="fa fa-edit"></i></a>';
+            } else {
+                $row[] = '<a class="btn btn-minier btn-primary" href="javascript:void(0)" title="Follow UP" onclick="follow_up(' . "'" . $create['cekonu_id'] . "'" . ')"><i class="fa fa-edit"></i></a> <a class="btn btn-minier btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_data(' . "'" . $create['cekonu_id'] . "'" . ')"><i class="fa fa-trash"></i></a>';
             }
-            else {
-                $row[] = '<a class="btn btn-minier btn-primary" href="javascript:void(0)" title="Follow UP" onclick="follow_up('."'".$create['cekonu_id']."'".')"><i class="fa fa-edit"></i></a>';
-            }
+
             $data[] = $row;
         }
 
         $output = array(
 
-                        "draw" => $_POST['draw'],
-                        "recordsTotal" => $this->cek_onu_model->count_all(),
-                        "recordsFiltered" => $this->cek_onu_model->count_filtered(),
-                        "data" => $data,
-                );
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->cek_onu_model->count_all(),
+            "recordsFiltered" => $this->cek_onu_model->count_filtered(),
+            "data" => $data,
+        );
 
         echo json_encode($output);
     }
@@ -91,7 +95,7 @@ class Cek_onu extends MY_Controller {
         echo json_encode(
             array(
                 "status" => TRUE,
-                'pesan'=>'<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Well done!</b> Data successfully updated!</div>'
+                'pesan' => '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Well done!</b> Data successfully updated!</div>'
             )
         );
 
@@ -100,8 +104,7 @@ class Cek_onu extends MY_Controller {
 
         if ($ket_up == null) {
             $ket_up = "-";
-        }
-        else{
+        } else {
             $ket_up = $ket_up;
         }
 
@@ -122,11 +125,10 @@ class Cek_onu extends MY_Controller {
         echo json_encode(
             array(
                 "status" => TRUE,
-                'pesan'=>'<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Well done!</b> Data successfully removed!</div>'
+                'pesan' => '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Well done!</b> Data successfully removed!</div>'
             )
         );
     }
-
 }
 
 /* End of file Cek_onu.php */

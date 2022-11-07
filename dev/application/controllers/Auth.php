@@ -33,26 +33,30 @@ class Auth extends MY_Controller
 		if ($cekemail > 0) {
 			if ($cekea > 0) {
 				$user_detail = $this->db->get_where('tb_users', array('email' => $post['email'], 'active' => 1), 1, NULL)->row();
+				if (loginAksesProvi(@$user_detail->level)) {
+					if (@$user_detail->password == crypt($post['password'], @$user_detail->password) && @$user_detail->active == 1) {
 
-				if (@$user_detail->password == crypt($post['password'], @$user_detail->password) && @$user_detail->active == 1) {
+						$login_data = array(
+							'user_id' 	=> $user_detail->users_id,
+							'username' 	=> $user_detail->username,
+							'email'  	=> $post['email'],
+							'logged_in' => TRUE,
+							'nama' 		=> $user_detail->fullname,
+							'level' 	=> $user_detail->level,
+							'active' 	=> $user_detail->active
+						);
 
-					$login_data = array(
-						'user_id' 	=> $user_detail->users_id,
-						'username' 	=> $user_detail->username,
-						'email'  	=> $post['email'],
-						'logged_in' => TRUE,
-						'nama' 		=> $user_detail->fullname,
-						'level' 	=> $user_detail->level,
-						'active' 	=> $user_detail->active
-					);
+						$this->session->set_userdata($login_data);
+						$this->db->where('users_id', $user_detail->users_id);
+						$this->db->update('tb_users', array('last_login' => date('Y-m-d H:i:s')));
+						redirect(base_url("welcome"));
+					} else {
 
-					$this->session->set_userdata($login_data);
-					$this->db->where('users_id', $user_detail->users_id);
-					$this->db->update('tb_users', array('last_login' => date('Y-m-d H:i:s')));
-					redirect(base_url("welcome"));
+						$this->session->set_flashdata('info', '<div class="alert alert-danger" role="alert"><strong>Maaf!</strong> kombinasi email dan password anda tidak tepat.</div>');
+						redirect('auth');
+					}
 				} else {
-
-					$this->session->set_flashdata('info', '<div class="alert alert-danger" role="alert"><strong>Maaf!</strong> kombinasi email dan password anda tidak tepat.</div>');
+					$this->session->set_flashdata('info', '<div class="alert alert-danger" role="alert"><strong>Maaf!</strong> email tidak memiliki akses masuk.</div>');
 					redirect('auth');
 				}
 			} else {
